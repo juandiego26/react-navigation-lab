@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Text } from 'react-native';
 import Home from './src/screens/containers/home'
 import Header from './src/sections/components/header'
+import Loader from './src/loader/components/loader'
 import SuggestionList from './src/videos/containers/suggestion-list'
 import API from './utils/api'
 
@@ -9,14 +10,16 @@ import API from './utils/api'
 
 export default class App extends Component {
   state = {
-    suggestionList: []
+    suggestionList: [],
+    loading: true // Esto nos indica cuando la lista de la api este cargando
   }
 
   async componentDidMount() {
     const movies = await API.getSuggestion(10)
     console.log(movies)
     this.setState({
-      suggestionList: movies
+      suggestionList: movies,
+      loading: false // cuando los datos son renderizados cambia el estado del loader
     })
   }
   render() {
@@ -25,9 +28,14 @@ export default class App extends Component {
         <Header />
         <Text>Buscador</Text>
         <Text>Categorías</Text>
-        <SuggestionList
-          list={this.state.suggestionList}
-        />
+        {this.state.loading ?
+          (<Loader />) :
+          (
+          <SuggestionList
+            list={this.state.suggestionList}
+          />
+          )
+        }
       </Home>
     );
   }
