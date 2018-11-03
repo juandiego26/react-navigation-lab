@@ -2,24 +2,30 @@ import React, {Component} from 'react';
 import { Text } from 'react-native';
 import Home from './src/screens/containers/home'
 import Header from './src/sections/components/header'
-import Loader from './src/loader/components/loader'
 import SuggestionList from './src/videos/containers/suggestion-list'
 import API from './utils/api'
+import CategoryList from './src/videos/containers/category-list'
 
 // console.disableYellowBox = true // para deshabilitar las advertencias en el localhos:8081/debugger-ui
 
 export default class App extends Component {
   state = {
     suggestionList: [],
-    loading: true // Esto nos indica cuando la lista de la api este cargando
+    categoryList: [],
+    loadingCategories: true,
+    loadingSuggestions: true
   }
 
   async componentDidMount() {
     const movies = await API.getSuggestion(10)
+    const categories = await API.getMovies()
     console.log(movies)
+    console.log(categories)
     this.setState({
       suggestionList: movies,
-      loading: false // cuando los datos son renderizados cambia el estado del loader
+      categoryList: categories,
+      loadingCategories: false,
+      loadingSuggestions: false
     })
   }
   render() {
@@ -28,14 +34,14 @@ export default class App extends Component {
         <Header />
         <Text>Buscador</Text>
         <Text>Categorías</Text>
-        {this.state.loading ?
-          (<Loader />) :
-          (
-          <SuggestionList
-            list={this.state.suggestionList}
-          />
-          )
-        }
+        <CategoryList
+          list={this.state.categoryList}
+          loading={this.state.loadingCategories}
+        />
+        <SuggestionList
+          list={this.state.suggestionList}
+          loading={this.state.loadingSuggestions}
+        />
       </Home>
     );
   }
