@@ -7,7 +7,8 @@ import API from './utils/api'
 import CategoryList from './src/videos/containers/category-list'
 import Player from './src/player/containers/player'
 import { Provider } from 'react-redux'
-import store from './store'
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor }from './store'
 
 // console.disableYellowBox = true // para deshabilitar las advertencias en el localhos:8081/debugger-ui
 
@@ -40,15 +41,20 @@ export default class App extends Component {
       <Provider
         store={store}
       >
-        <Home>
-          <Header />
-          <Player />
-          <Text>Buscador</Text>
-          <CategoryList
-          />
-          <SuggestionList
-          />
-        </Home>
+        <PersistGate
+          loading={<Text>cargando...</Text>}
+          persistor={persistor}
+        >
+          <Home>
+            <Header />
+            <Player />
+            <Text>Buscador</Text>
+            <CategoryList
+            />
+            <SuggestionList
+            />
+          </Home>
+        </PersistGate>
       </Provider>
     );
   }
