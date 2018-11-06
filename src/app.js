@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import API from '../utils/api'
-import { Text } from 'react-native'
 import { connect } from 'react-redux'
 
 import CategoryList from './videos/containers/category-list'
@@ -8,6 +7,7 @@ import Home from './screens/containers/home'
 import Header from './sections/components/header'
 import SuggestionList from './videos/containers/suggestion-list'
 import Movie from './screens/containers/movie'
+import Search from '../src/sections/containers/search'
 
 class AppLayout extends Component {
   async componentDidMount() {
@@ -34,7 +34,7 @@ class AppLayout extends Component {
     return (
       <Home>
         <Header />
-        <Text>Buscador</Text>
+        <Search />
         <CategoryList />
         <SuggestionList/>
       </Home>
