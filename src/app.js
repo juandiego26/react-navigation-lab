@@ -12,6 +12,7 @@ import Movie from './screens/containers/movie'
 class AppLayout extends Component {
   async componentDidMount() {
     const categoryList = await API.getMovies()
+    // console.log(categoryList)
     this.props.dispatch({
       type: 'SET_CATEGORY_LIST',
       payload: {
