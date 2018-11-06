@@ -13,6 +13,8 @@ class AppLayout extends Component {
   async componentDidMount() {
     const categoryList = await API.getMovies()
     // console.log(categoryList)
+    // console.log('Esta es la lista de categorías')
+    // console.table(categoryList);
     this.props.dispatch({
       type: 'SET_CATEGORY_LIST',
       payload: {

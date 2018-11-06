@@ -29,6 +29,8 @@ build/
 .gradle
 local.properties
 *.iml
+gradle.properties/
+android/app/platzivideo.keystore
 
 # node.js
 #
