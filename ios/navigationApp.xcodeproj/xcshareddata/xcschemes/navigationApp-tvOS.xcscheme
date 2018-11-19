@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "platziVideoApp-tvOS.app"
-               BlueprintName = "platziVideoApp-tvOS"
-               ReferencedContainer = "container:platziVideoApp.xcodeproj">
+               BuildableName = "navigationApp-tvOS.app"
+               BlueprintName = "navigationApp-tvOS"
+               ReferencedContainer = "container:navigationApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "platziVideoApp-tvOSTests.xctest"
-               BlueprintName = "platziVideoApp-tvOSTests"
-               ReferencedContainer = "container:platziVideoApp.xcodeproj">
+               BuildableName = "navigationApp-tvOSTests.xctest"
+               BlueprintName = "navigationApp-tvOSTests"
+               ReferencedContainer = "container:navigationApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "platziVideoApp-tvOSTests.xctest"
-               BlueprintName = "platziVideoApp-tvOSTests"
-               ReferencedContainer = "container:platziVideoApp.xcodeproj">
+               BuildableName = "navigationApp-tvOSTests.xctest"
+               BlueprintName = "navigationApp-tvOSTests"
+               ReferencedContainer = "container:navigationApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "platziVideoApp-tvOS.app"
-            BlueprintName = "platziVideoApp-tvOS"
-            ReferencedContainer = "container:platziVideoApp.xcodeproj">
+            BuildableName = "navigationApp-tvOS.app"
+            BlueprintName = "navigationApp-tvOS"
+            ReferencedContainer = "container:navigationApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "platziVideoApp-tvOS.app"
-            BlueprintName = "platziVideoApp-tvOS"
-            ReferencedContainer = "container:platziVideoApp.xcodeproj">
+            BuildableName = "navigationApp-tvOS.app"
+            BlueprintName = "navigationApp-tvOS"
+            ReferencedContainer = "container:navigationApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "platziVideoApp-tvOS.app"
-            BlueprintName = "platziVideoApp-tvOS"
-            ReferencedContainer = "container:platziVideoApp.xcodeproj">
+            BuildableName = "navigationApp-tvOS.app"
+            BlueprintName = "navigationApp-tvOS"
+            ReferencedContainer = "container:navigationApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

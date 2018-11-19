@@ -5,6 +5,7 @@ import { store, persistor }from './store'
 
 import Loading from './src/sections/components/loading'
 import AppLayout from './src/app'
+import AppNavigatorWithState from './src/app-navigator-with-state'
 
 // console.disableYellowBox = true // para deshabilitar las advertencias en el localhos:8081/debugger-ui
 export default class App extends Component {
@@ -17,7 +18,7 @@ export default class App extends Component {
           loading={<Loading />}
           persistor={persistor}
         >
-          <AppLayout />
+          <AppNavigatorWithState />
         </PersistGate>
       </Provider>
     );

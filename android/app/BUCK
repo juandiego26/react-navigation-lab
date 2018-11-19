@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.platzivideoapp",
+    package = "com.navigationapp",
 )
 
 android_resource(
     name = "res",
-    package = "com.platzivideoapp",
+    package = "com.navigationapp",
     res = "src/main/res",
 )
 
