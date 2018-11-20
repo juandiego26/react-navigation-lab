@@ -12,6 +12,17 @@ import Details from '../../videos/components/details'
     state = {
       opacity: new Animated.Value(0)
     }
+    static navigationOptions = ({ navigation }) => {
+      return {
+        header: (
+          <Header>
+            <Close
+              onPress={() => {navigation.goBack()}}
+            />
+          </Header>
+        )
+      }
+    }
     closeVideo = () => {
       this.props.dispatch({
         type: 'SET_SELECTED_MOVIE',
@@ -35,11 +46,6 @@ import Details from '../../videos/components/details'
           style={{flex: 1, opacity: this.state.opacity,}}
         >
           <MovieLayout>
-            <Header>
-              <Close
-                onPress={this.closeVideo}
-              />
-            </Header>
             <Player />
             <Details {...this.props.movie} />
           </MovieLayout>
@@ -50,7 +56,7 @@ import Details from '../../videos/components/details'
 
   function mapStateToProps(state) {
     return {
-      movie: state.selectedMovie
+      movie: state.videos.selectedMovie
     }
   }
 

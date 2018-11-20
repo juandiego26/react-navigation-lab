@@ -6,10 +6,11 @@ import Separator from '../components/vertical-separator'
 import Suggestion from '../components/suggestion'
 import Loader from '../../loader/components/loader'
 import { connect } from 'react-redux'
+import { NavigationActions } from 'react-navigation'
 
 function mapStateToProps(state) {
   return {
-    list: state.suggestionList
+    list: state.videos.suggestionList
   }
 }
 
@@ -24,6 +25,11 @@ class SuggestionList extends Component {
         movie: item
       }
     })
+    this.props.dispatch(
+      NavigationActions.navigate({
+        routeName: 'Movie'
+      })
+    )
   }
   renderItem = ({item}) => {
     return (
