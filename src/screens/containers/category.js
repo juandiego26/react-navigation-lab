@@ -1,52 +1,53 @@
 import React, { Component } from 'react'
-import { FlatList } from 'react-native'
-import Empty from '../components/empty'
-import Separator from '../../sections/components/horizontal-separator'
-import Category from '../components/category'
-import Layout from '../components/category-list-layout'
+import { FlatList, Text } from 'react-native'
+import Layout from '../../videos/components/suggestion-list-layout'
+import Empty from '../../videos/components/empty'
+import Separator from '../../videos/components/vertical-separator'
+import Suggestion from '../../videos/components/suggestion'
 import Loader from '../../loader/components/loader'
 import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 
 function mapStateToProps(state) {
-  // debugger
   return {
     list: state.videos.categoryList
   }
 }
 
-class CategoryList extends Component {
+class Category extends Component {
   keyExtractor = item => item.id.toString()
   renderEmpty = () => <Empty text="No hay sugerencias :(" />
   itemSeparator = () => <Separator />
-  viewCategory = (item) => {
+  viewMovie = (item) => {
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: item
+      }
+    })
     this.props.dispatch(
       NavigationActions.navigate({
-        routeName: 'Category',
-        params: {
-          genre: item.genres[0]
-        }
+        routeName: 'Movie'
       })
     )
   }
   renderItem = ({item}) => {
     return (
-      <Category
+      <Suggestion
         {...item}
-        onPress={() => { this.viewCategory(item) }}
+        onPress={() => {  this.viewMovie(item)  }}
       />
     )
   }
   render() {
     return (
       <Layout
-        title="Categorias"
+        title={`${this.props.navigation.getParam('genre', 'Categoria')}`}
       >
       {this.props.loading ?
         (<Loader />) :
         (
           <FlatList
-            horizontal
             keyExtractor={this.keyExtractor}
             data={this.props.list}
             ListEmptyComponent={this.renderEmpty}
@@ -60,4 +61,4 @@ class CategoryList extends Component {
   }
 }
 
-export default connect(mapStateToProps)(CategoryList)
+export default connect(mapStateToProps)(Category)
