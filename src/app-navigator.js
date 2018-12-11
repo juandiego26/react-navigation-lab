@@ -1,7 +1,9 @@
 import {
   createStackNavigator,
   createAppContainer,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createSwitchNavigator,
+  createDrawerNavigator
 } from 'react-navigation'
 import React from 'react'
 import Home from './screens/containers/home'
@@ -12,16 +14,21 @@ import About from './screens/containers/about'
 import Profile from './screens/containers/profile'
 import Lucky from './screens/containers/lucky'
 import Icon from './sections/components/icon'
+import Loading from './screens/containers/loading'
+import Login from './screens/containers/login'
+import DrawerComponent from './sections/components/drawer'
 
 const Main = createStackNavigator(
   {
     Home: Home,
-    Movie: Movie,
-    Category
+    Category,
   },
   {
     navigationOptions: {
       header: Header,
+    },
+    cardStyle: {
+      backgroundColor: 'white'
     }
   }
 )
@@ -53,6 +60,76 @@ const TabNavigator = createBottomTabNavigator(
   }
 )
 
-const App = createAppContainer(TabNavigator)
+const WithModal = createStackNavigator(
+  {
+    Main: {
+      screen: TabNavigator
+    },
+    Movie: Movie,
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: 'white'
+    },
+    navigationOptions: {
+      cardStack: {
+        gesturesEnabled: true
+      }
+    }
+  }
+)
+
+const DrawerNavigator = createDrawerNavigator(
+  {
+    Main: {
+      screen: WithModal,
+      navigationOptions: {
+        title: 'Inicio',
+        drawerIcon: <Icon icon="🏠"/>
+      }
+    },
+    Sobre: {
+      screen: About
+    },
+    Suerte: {
+      screen: Lucky
+    },
+  },
+  {
+    drawerWidth: 200,
+    drawerBackgroundColor: '#f6f6f6',
+    contentComponent: DrawerComponent,
+    contentOptions: {
+      activeBackgroundColor: '#7aba2f',
+      activeTintColor: 'white',
+      inactiveTintColor: '#828282',
+      inactiveBackgroundColor: 'white',
+      itemStyle: {
+        borderBottomWidth: .5,
+        boderBottomColor: 'rgba(0,0,0,.5)'
+      },
+      labelStyle: {
+        marginHorizontal: 0
+      },
+      iconContainerStyle: {
+        marginHorizontal: 5,
+      }
+    }
+  }
+)
+
+const SwitchNavigator = createSwitchNavigator(
+  {
+    App: DrawerNavigator,
+    Login: Login,
+    Loading: Loading
+  },
+  {
+    initialRouteName: 'Loading',
+  }
+  )
+const App = createAppContainer(SwitchNavigator)
 
 export default App
